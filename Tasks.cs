@@ -1,4 +1,4 @@
-﻿using LmbdLnq;
+using LmbdLnq;
 using System.Threading;
 using LinqExceptions;
 using System.Linq;
@@ -6,8 +6,6 @@ namespace System
 {
     public class Tasks
     {
-
-        
         public static void Runer()
         {
             string prompt = @"
@@ -37,7 +35,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                 ,"13)Nomresinde tekrar reqemler olmayan borclularin ve onlarin borcunun meblegin cixartmaq"
                 ,"14)Tesevvur edek ki,butun borclari olanlar bugunden etibaren her ay 500 azn pul odeyecekler.Oz ad gunune kimi borcun oduyub qurtara bilenlerin siyahisin cixartmaq"
                 ,"15)Adindaki ve familyasindaki herflerden \"smile\" sozunu yaza bileceyimiz borclularin siyahisini cixartmaq"
-                ,"Go to Back"};
+                };
             Menu mainMenu = new Menu(prompt, options);
             mainMenu.Run();
             int selectedIndex = mainMenu.Run();
@@ -89,13 +87,24 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                 case 14:
                     m15();
                     break;
-                case 15:
-                    mainMenu.Run();
-                    break;
                 default:
                     break;
             }
-
+            void PressBack()
+            {
+                Console.WriteLine("\n\n\n");
+                Console.WriteLine(" For going to back press Escape button on keyboard");
+                ConsoleKey keyPressed;
+                do
+                {
+                    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                    keyPressed = keyInfo.Key;
+                    if (keyPressed == ConsoleKey.Escape)
+                    {
+                        Tasks.Runer();
+                    }
+                } while (keyPressed != ConsoleKey.Escape);
+            }
 
              void m1()
             {
@@ -122,15 +131,9 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                 Console.WriteLine("\n");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 debtorsByDomains.ForEach(Console.WriteLine);
-                Console.WriteLine(@" Do you want to go back or exit 
-1 Go back
-2 Exit");
-                //int a  = Console.Read();
-               // if (a == 0)
-               // {
-                   // PressBack();
-               // }
-                //else if (a == 2) System.Environment.Exit(0);
+                Console.WriteLine(" \n\n\n\n");
+
+                PressBack();
             }
             void m2()
             {
@@ -157,7 +160,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                 Console.WriteLine("\n");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 debtorsByAge.ForEach(Console.WriteLine);
-                //PressBack();
+               PressBack();
             }
             void m3()
             {
@@ -178,7 +181,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                 Console.WriteLine("\n");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 debtorsByDebt.ForEach(Console.WriteLine);
-               // PressBack();
+               PressBack();
             }
           
             void m4()
@@ -216,7 +219,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                     Console.WriteLine("\n");
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                     debtorsByNameLength.ForEach(Console.WriteLine);
-                    //PressBack();
+                   PressBack();
                     if (debtorsByNameLength.Count == 0)
                     {
                         Console.BackgroundColor = ConsoleColor.Yellow;
@@ -236,7 +239,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                     Console.WriteLine("\n");
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.WriteLine(ex.Message);
-                  //  PressBack();
+                   PressBack();
                 }
                
             }
@@ -259,7 +262,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                 Console.WriteLine("\n");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 onlyWinterDebtors.ForEach(Console.WriteLine);
-              //  PressBack();
+               PressBack();
             }
             void m6()
             {
@@ -295,7 +298,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                     .ToList();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 debtorsSortedBySurname.ForEach(Console.WriteLine);
-              //  PressBack();
+               PressBack();
             }
             void m7()
             {
@@ -320,9 +323,9 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                     ///////////////////////////////////////////////////////////////////////////////////////////////////////////// ");
                     Console.WriteLine("\n");
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    Console.WriteLine($"{nameComponents[nameComponents.Length - 1]} {DateTime.Now.Year - d.BirthDay.Year} {d.Phone} {d.Debt}");
+                    Console.WriteLine($"{d.FullName}{nameComponents[nameComponents.Length - 1]}      {DateTime.Now.Year - d.BirthDay.Year} {d.Phone} {d.Debt}");
                 });
-               // PressBack();
+               PressBack();
             }
 
             void m8()
@@ -345,7 +348,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 debtors4.ForEach(Console.WriteLine);
-             //   PressBack();
+               PressBack();
             }
 
             void m9()
@@ -366,7 +369,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                     ////////////////////////////////////////////////////////////////////");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine(year);
-             //   PressBack();
+               PressBack();
             }
             void m10()
             {    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -387,7 +390,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                     ////////////////////////////////////////////////////////////////");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 firstFiveHigherDebtors.ForEach(Console.WriteLine);
-            //    PressBack();
+               PressBack();
             }
             void m11()
             {  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -404,7 +407,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                     ////////////////////////////////////////////////////////////////////");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine(totalDebt);
-             //   PressBack();
+               PressBack();
             }
             void m12()
             {
@@ -425,7 +428,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                     ////////////////////////////////////////////////////////////////////");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 debtorsBySecondWoW.ForEach(Console.WriteLine);
-            //    PressBack();
+               PressBack();
             }
             void m13()
             {
@@ -457,7 +460,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.WriteLine($"{d.FullName} {d.Debt}");
                 });
-             //   PressBack();
+               PressBack();
             }
 
             void m14()
@@ -496,7 +499,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 debtorsClean.ForEach(Console.WriteLine);
-              //  PressBack();
+               PressBack();
             }
             void m15()
             {
@@ -524,39 +527,17 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 debtors7.ForEach(Console.WriteLine);
                 //Console.ReadLine();
-             //   PressBack();
+               PressBack();
             }
-
-              void PressBack()
-            {
-                Console.WriteLine("\n");
-                Console.WriteLine(" For going to back press Escape button on keyboard");
-                ConsoleKey keyPressed;
-                do
-                {
-                    Console.Clear();
-                    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                    keyPressed = keyInfo.Key;
-
-                    if (keyPressed == ConsoleKey.Escape)
-                    {
-                        mainMenu.Run();
-                    }
-                } while (keyPressed != ConsoleKey.Escape);
-            }
-
         }
-
         public override bool Equals(object obj)
         {
             return base.Equals(obj);
         }
-
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
-
         public override string ToString()
         {
             return base.ToString();
